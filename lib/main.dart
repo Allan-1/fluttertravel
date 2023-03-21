@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mytravel/screens/loginscreen.dart';
 import 'package:mytravel/screens/main_screen.dart';
 import 'package:mytravel/util/const.dart';
 
@@ -21,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       title: Constants.appName,
       theme: Constants.lightTheme,
       darkTheme: Constants.darkTheme,
-      home: const MainScreen(),
+      home: const LoginScreen(),
     );
   }
 }
