@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:mytravel/models/hotel_model.dart';
 
 import '../util/places.dart';
 import '../widgets/icon_badge.dart';
 
 class Details extends StatelessWidget {
-  const Details({super.key});
+  final HotelModel place;
+  const Details({super.key, required this.place});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class Details extends StatelessWidget {
         ),
         actions: <Widget>[
           IconButton(
-            icon: IconBadge(
+            icon: const IconBadge(
               icon: Icons.notifications_none, size: 24.0, color: Colors.black,
             ),
             onPressed: () {},
@@ -42,7 +44,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      places[0].name,
+                      place.name,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
@@ -70,7 +72,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      places[0].location,
+                      place.location,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -86,7 +88,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  places[0].price,
+                  place.price,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
@@ -112,7 +114,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  places[0].details,
+                  place.details,
                   style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,
@@ -143,14 +145,14 @@ class Details extends StatelessWidget {
         primary: false,
         itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
-          Map place = places[index] as Map;
+          HotelModel place = places[index];
 
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.asset(
-                "${place["img"]}",
+                place.image,
                 height: 250.0,
                 width: MediaQuery.of(context).size.width - 40.0,
                 fit: BoxFit.cover,
