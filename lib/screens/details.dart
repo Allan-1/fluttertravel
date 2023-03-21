@@ -42,7 +42,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${places[0]["name"]}",
+                      places[0].name,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
@@ -70,7 +70,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "${places[0]["location"]}",
+                      places[0].location,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -86,7 +86,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${places[0]["price"]}",
+                  places[0].price,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
@@ -112,7 +112,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "${places[0]["details"]}",
+                  places[0].details,
                   style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,
@@ -143,7 +143,7 @@ class Details extends StatelessWidget {
         primary: false,
         itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
-          Map place = places[index];
+          Map place = places[index] as Map;
 
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),

@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
         primary: false,
         itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
-          Map place = places.reversed.toList()[index];
+          Map place = places.reversed.toList()[index] as Map;
           return HorizontalPlaceItem(place: place);
         },
       ),
@@ -60,7 +60,7 @@ class Home extends StatelessWidget {
         shrinkWrap: true,
         itemCount: places.length,
         itemBuilder: (BuildContext context, int index) {
-          Map place = places[index];
+          Map place = places[index] as Map;
           return VerticalPlaceItem(place: place);
         },
       ),
