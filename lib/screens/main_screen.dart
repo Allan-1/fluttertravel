@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:mytravel/screens/SettingScreen.dart';
+import 'package:mytravel/screens/booking_screen.dart';
+import 'package:mytravel/screens/hotel_screen.dart';
 
 import '../widgets/icon_badge.dart';
 import 'home.dart';
@@ -15,29 +18,46 @@ class _MainScreenState extends State<MainScreen> {
   late PageController _pageController;
   int _page = 0;
 
+  List<Widget> screenOption = [
+    const Home(),
+    const HotelScreen(),
+    const BookingScreen(),
+    const SettingScreen()
+  ];
+  int selectedIndex = 0;
+
+  void itemTapped(index){
+    setState(() {
+      selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
             icon: const IconBadge(
-              icon: Icons.notifications_none, size: 24.0, color: Colors.black,
+              icon: Icons.notifications_none,
+              size: 24.0,
+              color: Colors.black,
             ),
             onPressed: () {},
           ),
         ],
       ),
-      bottomNavigationBar: const Padding(
-        padding: EdgeInsets.all(8.0),
+      bottomNavigationBar:  Padding(
+        padding: const EdgeInsets.all(8.0),
         child: GNav(
           gap: 8,
           tabBackgroundColor: Colors.blue,
           activeColor: Colors.white,
           backgroundColor: Colors.white10,
           color: Colors.blueGrey,
-          padding: EdgeInsets.all(16),
-          tabs: [
+          padding: const EdgeInsets.all(16),
+          onTabChange: itemTapped,
+          tabs: const [
             GButton(
               icon: Icons.home,
               text: "Home",
@@ -57,7 +77,7 @@ class _MainScreenState extends State<MainScreen> {
           ],
         ),
       ),
-      body: const Home(),
+      body: screenOption[selectedIndex],
     );
   }
 
