@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mytravel/models/cities_model.dart';
 import 'package:mytravel/models/hotel_model.dart';
+import 'package:mytravel/screens/cityhotel_screen.dart';
 import 'package:mytravel/screens/home.dart';
 
 import '../screens/details.dart';
@@ -51,7 +52,7 @@ class HorizontalPlaceItemGrid extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
-                return Home();
+                return CityHotelScreen(cityname: place.name,);
               },
             ),
           );

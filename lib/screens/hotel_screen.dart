@@ -21,7 +21,7 @@ class HotelScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.68,
             child: ListView.builder(
               primary: false,
               // physics: const NeverScrollableScrollPhysics(),
