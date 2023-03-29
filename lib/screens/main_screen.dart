@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:mytravel/screens/SettingScreen.dart';
+import 'package:mytravel/screens/profile_screen.dart';
 import 'package:mytravel/screens/booking_screen.dart';
 import 'package:mytravel/screens/hotel_screen.dart';
 
@@ -21,8 +21,7 @@ class _MainScreenState extends State<MainScreen> {
   List<Widget> screenOption = [
     const Home(),
     const HotelScreen(),
-    const BookingScreen(),
-    const SettingScreen()
+    const ProfileScreen()
   ];
   int selectedIndex = 0;
 
@@ -66,13 +65,10 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icons.hotel,
               text: "Hotels",
             ),
+
             GButton(
-              icon: Icons.book,
-              text: "Bookings",
-            ),
-            GButton(
-              icon: Icons.settings,
-              text: "Settings",
+              icon: Icons.person,
+              text: "Profile",
             ),
           ],
         ),

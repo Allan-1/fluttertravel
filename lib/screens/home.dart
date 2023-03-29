@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mytravel/util/cities.dart';
+import 'package:mytravel/widgets/horizontal_place_item_grid.dart';
 
 import '../util/places.dart';
 import '../widgets/horizontal_place_item.dart';
@@ -6,32 +8,31 @@ import '../widgets/icon_badge.dart';
 import '../widgets/search_bar.dart';
 import '../widgets/vertical_place_item.dart';
 
-
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListView(
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Text(
-              "Where are you \ngoing?",
-              style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.w600,
-              ),
+      children: <Widget>[
+        const Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Text(
+            "Where are you \ngoing?",
+            style: TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.w600,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SearchBar(),
-          ),
-          buildHorizontalList(context),
-          buildVerticalList(),
-        ],
-      );
+        ),
+        // Padding(
+        //   padding: const EdgeInsets.all(20.0),
+        //   child: SearchBar(),
+        // ),
+        buildGridList(context)
+        // buildVerticalList(),
+      ],
+    );
   }
 
   buildHorizontalList(BuildContext context) {
@@ -47,6 +48,24 @@ class Home extends StatelessWidget {
           final place = places.reversed.toList()[index];
           return HorizontalPlaceItem(place: place);
         },
+      ),
+    );
+  }
+
+  buildGridList(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.8,
+      child: Padding(
+        padding:const  EdgeInsets.all(8.0),
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: cities.length,
+            itemBuilder: (context, index) {
+              final city = cities[index];
+              return HorizontalPlaceItemGrid(place: city);
+            }),
       ),
     );
   }
