@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mytravel/api/getcitiesapi.dart';
 import 'package:mytravel/util/cities.dart';
 import 'package:mytravel/widgets/horizontal_place_item_grid.dart';
 
@@ -57,15 +58,18 @@ class Home extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.8,
       child: Padding(
         padding:const  EdgeInsets.all(8.0),
-        child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            itemCount: cities.length,
-            itemBuilder: (context, index) {
-              final city = cities[index];
-              return HorizontalPlaceItemGrid(place: city);
-            }),
+        child: FutureBuilder(
+          future: fetchCity(),
+          builder: (context, snapshot) => snapshot.hasData ? GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+              ),
+              itemCount: cities.length,
+              itemBuilder: (context, index) {
+                final city = cities[index];
+                return HorizontalPlaceItemGrid(place: city);
+              }): const CircularProgressIndicator()
+        ) ,
       ),
     );
   }
