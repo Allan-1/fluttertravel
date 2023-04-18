@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mytravel/screens/main_screen.dart';
+import 'package:mytravel/screens/signupscreen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -69,14 +71,18 @@ class _LoginScreenState extends State<LoginScreen> {
               TextButton(
                   onPressed: () {}, child: const Text('Forgot password ?')),
               SizedBox(
-                width: MediaQuery.of(context).size.width*0.8,
+                width: MediaQuery.of(context).size.width * 0.8,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(15)),
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const MainScreen()), (route) => false);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const MainScreen()),
+                        (route) => false);
                   },
                   child: const Text('Login'),
                 ),
@@ -84,15 +90,17 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 20,
               ),
-
               Row(
                 children: [
                   const Text('Don\'t have an account'),
-                  // TextButton(
-                  //     onPressed: () {
-                  //       Navigator.pushNamed(context, Routes.signupScreen);
-                  //     },
-                  //     child: const Text('Register ?'))
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignupScreen()));
+                      },
+                      child: const Text('Register ?'))
                 ],
               ),
               const Align(
