@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:mytravel/models/hotel_model.dart';
+import 'package:mytravel/screens/booking_screen.dart';
 
 import '../util/places.dart';
 import '../widgets/icon_badge.dart';
 
-class Details extends StatelessWidget {
+class Details extends StatefulWidget {
   final HotelModel place;
   const Details({super.key, required this.place});
 
+  @override
+  State<Details> createState() => _DetailsState();
+}
+
+class _DetailsState extends State<Details> {
+  bool bookmarkClicked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,20 +51,27 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      place.name,
+                      widget.place.name,
                       style: const TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 20,
+                        overflow: TextOverflow.fade,
                       ),
+                      softWrap: true,
                       maxLines: 2,
                       textAlign: TextAlign.left,
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
+                    icon:  Icon(
                       Icons.bookmark,
+                      color: bookmarkClicked ? Colors.red : Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        bookmarkClicked = !bookmarkClicked;
+                      });
+                    },
                   ),
                 ],
               ),
@@ -72,7 +86,7 @@ class Details extends StatelessWidget {
                   Container(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      place.location,
+                      widget.place.location,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 13,
@@ -88,7 +102,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  place.price,
+                  widget.place.price,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 17,
@@ -114,7 +128,7 @@ class Details extends StatelessWidget {
               Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  place.details,
+                  widget.place.details,
                   style: const TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 15.0,
@@ -131,7 +145,15 @@ class Details extends StatelessWidget {
         child: const Icon(
           Icons.airplanemode_active,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (BuildContext context) {
+                return const BookingScreen();
+              },
+            ),
+          );
+        },
       ),
     );
   }

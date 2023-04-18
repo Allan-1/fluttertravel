@@ -5,8 +5,6 @@ import 'package:mytravel/widgets/horizontal_place_item_grid.dart';
 
 import '../util/places.dart';
 import '../widgets/horizontal_place_item.dart';
-import '../widgets/icon_badge.dart';
-import '../widgets/search_bar.dart';
 import '../widgets/vertical_place_item.dart';
 
 class Home extends StatelessWidget {
