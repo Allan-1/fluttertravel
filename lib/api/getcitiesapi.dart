@@ -17,3 +17,17 @@ Future<List<CityModel>> fetchCity() async {
     throw Exception('Failed to load.');
   }
 }
+
+Future<List<HotelModel>> fetchHotels(String cityname) async {
+  final String apiurl = 'http://10.0.2.2:3000/hotels/$cityname';
+
+  final respose = await http.get(Uri.parse(apiurl));
+  if (respose.statusCode == 200) {
+    List<HotelModel> hotels = (jsonDecode(respose.body)['hotels'] as List)
+        .map((data) => HotelModel.fromJson(data))
+        .toList();
+    return hotels;
+  } else {
+    throw Exception("Failed to load.");
+  }
+}

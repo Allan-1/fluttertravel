@@ -14,4 +14,14 @@ class HotelModel {
     required this.details,
     required this.city,
   });
+
+  factory HotelModel.fromJson(Map<String, dynamic> json) {
+    return HotelModel(
+        name: json['name'],
+        image: json['imageurl'],
+        price: json['price'],
+        location: json['location'],
+        details: json['details'],
+        city: json['city']);
+  }
 }
