@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mytravel/screens/loginscreen.dart';
-import 'package:mytravel/screens/main_screen.dart';
 import 'package:mytravel/util/const.dart';
 
 void main() async {
