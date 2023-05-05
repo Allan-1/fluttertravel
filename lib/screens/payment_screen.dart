@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mytravel/api/paymentapi.dart';
+import 'package:mytravel/screens/confirm_pay.dart';
 
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
@@ -172,13 +173,16 @@ class PaymentScreenState extends State<PaymentScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ConfirmPayment()));
                       if (_selectedPaymentMethod == 'Credit Card') {
                         print('Processing credit card payment...');
                         print('Card Number: $_cardNumber');
                         print('Expiry Date: $_expiryDate');
                         print('CVV: $_cvv');
                       } else if (_selectedPaymentMethod == 'M-Pesa') {
-
                         print('Processing M-Pesa payment...');
                         print('Mobile Number: $_mobileNumber');
                         makePayments(_mobileNumber, 200);

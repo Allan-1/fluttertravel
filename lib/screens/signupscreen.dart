@@ -105,12 +105,12 @@ class _SignupScreenState extends State<SignupScreen> {
                           borderRadius: BorderRadius.circular(10)),
                       padding: const EdgeInsets.all(15)),
                   onPressed: () {
-                    signupApi(usernameController.text, passwordController.text, emailController.text);
-                    // Navigator.pushAndRemoveUntil(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const MainScreen()),
-                    //         (route) => false);
+                    // signupApi(usernameController.text, passwordController.text, emailController.text);
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginScreen()),
+                            (route) => false);
                   },
                   child: const Text('Signup'),
                 ),
